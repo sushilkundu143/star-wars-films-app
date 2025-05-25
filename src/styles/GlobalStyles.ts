@@ -1,31 +1,18 @@
 import { createGlobalStyle } from 'styled-components';
 
-// Extend DefaultTheme to include background and text properties
-declare module 'styled-components' {
-  export interface DefaultTheme {
-    background?: string;
-    text?: string;
-  }
-}
-
 const GlobalStyles = createGlobalStyle`
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  html, body {
+  body {
     margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
-    background: ${({ theme }) => theme.background || '#fff'};
-    color: ${({ theme }) => theme.text || '#222'};
-    min-height: 100vh;
+    font-family: ${({ theme }) => theme.font.family};
+    font-size: ${({ theme }) => theme.font.size};
+    font-weight: ${({ theme }) => theme.font.weight};
+    background-color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.text};
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  button {
-    font-family: inherit;
+
+  * {
+    box-sizing: border-box;
   }
 `;
 

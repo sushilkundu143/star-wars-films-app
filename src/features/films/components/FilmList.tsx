@@ -1,8 +1,9 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { selectFilm } from '../redux/slices/filmsSlice';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { selectFilm } from '../filmsSlice';
 import styled from 'styled-components';
-import type { RootState } from '../redux/store';
+import type { RootState } from '../../../app/store';
+import type { Film } from '../filmTypes';
 
 const ListContainer = styled.div`
   padding: 1rem;
@@ -32,11 +33,6 @@ const Table = styled.table`
   }
 `;
 
-type Film = {
-  episode_id: number;
-  title: string;
-  release_date: string;
-};
 
 type Props = {
   searchTerm: string;

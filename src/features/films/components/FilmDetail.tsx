@@ -1,22 +1,16 @@
 import React from 'react';
-import { useAppSelector } from '../redux/hooks';
+import { useAppSelector } from '../../../app/hooks';
 import styled from 'styled-components';
-import type { RootState } from '../redux/store';
+import type { RootState } from '../../../app/store';
+import type { Film } from '../filmTypes';
 
 const DetailContainer = styled.div`
   width: 100%;
   padding: 1rem;
-  background-color: #f7f7f7;
+  background-color: ${({ theme }) => theme.colors.card};
+  color: ${({ theme }) => theme.colors.text};
+  transition: background-color 0.3s ease, color 0.3s ease;
 `;
-
-type Film = {
-  episode_id: number;
-  title: string;
-  director: string;
-  producer: string;
-  release_date: string;
-  opening_crawl: string;
-};
 
 const FilmDetail: React.FC = () => {
   const film = useAppSelector((state) => state.films.selected) as Film | null;

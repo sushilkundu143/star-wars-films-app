@@ -1,24 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-export const fetchFilms = createAsyncThunk('films/fetchFilms', async () => {
-  const response = await axios.get('https://swapi.py4e.com/api/films/?format=json');
-  return response.data.results;
-});
-
-type Film = {
-  episode_id: number;
-  title: string;
-  release_date: string;
-  // add more fields if needed
-};
-
-type FilmsState = {
-  items: Film[];
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  selected: Film | null;
-};
+import type { Film, FilmsState } from './filmTypes';
+import { fetchFilms } from './filmThunks';
 
 const initialState: FilmsState = {
   items: [],
